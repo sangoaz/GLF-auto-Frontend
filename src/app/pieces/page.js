@@ -1,3 +1,5 @@
+import { imageUrl } from "../utils/imageUrl"
+
 const CONDITION_LABELS = {
   NEW: "Neuf",
   USED_GOOD: "Occasion - Bon état",
@@ -65,7 +67,7 @@ export default async function PiecesPage() {
                 <div className="h-48 flex items-center justify-center" style={{ backgroundColor: 'var(--color-border)' }}>
                   {coverImage ? (
                     <img
-                      src={`http://127.0.0.1:8000${coverImage.image_url}`}
+                      src={imageUrl(coverImage.image_url)}
                       alt={coverImage.alt_text || piece.title}
                       className="w-full h-full object-cover"
                     />

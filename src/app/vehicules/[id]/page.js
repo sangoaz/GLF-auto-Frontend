@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { imageUrl } from "../../utils/imageUrl"
 
 async function getVehicule(id) {
   try {
@@ -60,7 +61,7 @@ export default async function VehiculeDetailPage({ params }) {
           >
             {coverImage ? (
               <img
-                src={`http://127.0.0.1:8000${coverImage.image_url}`}
+                src={imageUrl(coverImage.image_url)}
                 alt={coverImage.alt_text || vehicule.title}
                 className="w-full h-full object-cover"
               />
@@ -79,7 +80,7 @@ export default async function VehiculeDetailPage({ params }) {
                   style={{ backgroundColor: 'var(--color-border)' }}
                 >
                   <img
-                    src={`http://127.0.0.1:8000${img.image_url}`}
+                    src={imageUrl(img.image_url)}
                     alt={img.alt_text || vehicule.title}
                     className="w-full h-full object-cover"
                   />

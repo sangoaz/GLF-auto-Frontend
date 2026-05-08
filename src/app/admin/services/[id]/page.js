@@ -19,6 +19,7 @@ const STATUSES = [
   { value: "SOLD", label: "Vendu" },
 ]
 
+
 export default function EditServicePage() {
   const { ready, logout, authHeaders } = useAuth()
   const router = useRouter()

@@ -1,3 +1,5 @@
+import { imageUrl } from "../utils/imageUrl"
+
 async function getVehicules() {
   try {
     const res = await fetch('http://127.0.0.1:8000/vehicles/', {
@@ -74,7 +76,7 @@ export default async function VehiculesPage() {
                 <div className="h-48 flex items-center justify-center" style={{ backgroundColor: 'var(--color-border)' }}>
                   {coverImage ? (
                     <img
-                      src={`http://127.0.0.1:8000${coverImage.image_url}`}
+                      src={imageUrl(coverImage.image_url)}
                       alt={coverImage.alt_text || vehicule.title}
                       className="w-full h-full object-cover"
                     />

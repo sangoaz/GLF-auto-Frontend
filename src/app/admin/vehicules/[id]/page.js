@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useAuth } from "../../../hooks/useAuth"
 import AdminSidebar from "../../components/AdminSidebar"
+import { imageUrl } from "../../../utils/imageUrl"
 
 const FUELS = [
   { value: "PETROL", label: "Essence" },
@@ -310,7 +311,7 @@ export default function EditVehiculePage() {
                   }}
                 >
                   <img
-                    src={`http://127.0.0.1:8000${img.image_url}`}
+                    src={imageUrl(img.image_url)}
                     alt=""
                     className="w-16 h-16 object-cover shrink-0"
                   />
