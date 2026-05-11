@@ -39,7 +39,7 @@ export default function EditServicePage() {
 
   async function fetchService() {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/admin/services/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/services/${id}`, {
         headers: authHeaders(),
       })
       const data = await res.json()
@@ -61,7 +61,7 @@ export default function EditServicePage() {
     setSuccess(false)
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/admin/services/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/services/${id}`, {
         method: "PATCH",
         headers: authHeaders(),
         body: JSON.stringify({

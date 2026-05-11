@@ -38,7 +38,7 @@ export default function NouvellePiecePage() {
     setError(null)
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/admin/parts", {
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/parts", {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({

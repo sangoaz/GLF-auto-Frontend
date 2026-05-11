@@ -42,7 +42,7 @@ export default function EditPiecePage() {
 
   async function fetchPiece() {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/admin/parts/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${id}`, {
         headers: authHeaders(),
       })
       const data = await res.json()
@@ -53,7 +53,7 @@ export default function EditPiecePage() {
   }
 
   async function fetchImages() {
-    const res = await fetch(`http://127.0.0.1:8000/admin/parts/${id}/images`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${id}/images`, {
       headers: authHeaders(),
     })
     const data = await res.json()
@@ -71,7 +71,7 @@ export default function EditPiecePage() {
     setSuccess(false)
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/admin/parts/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${id}`, {
         method: "PATCH",
         headers: authHeaders(),
         body: JSON.stringify({
@@ -108,7 +108,7 @@ export default function EditPiecePage() {
     const headers = authHeaders()
     delete headers["Content-Type"]
 
-    await fetch(`http://127.0.0.1:8000/admin/parts/${id}/images/upload`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${id}/images/upload`, {
       method: "POST",
       headers,
       body: formData,
@@ -120,7 +120,7 @@ export default function EditPiecePage() {
   }
 
   async function handleSetCover(imageId) {
-    await fetch(`http://127.0.0.1:8000/admin/parts/${id}/images/${imageId}/cover`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${id}/images/${imageId}/cover`, {
       method: "PATCH",
       headers: authHeaders(),
     })
@@ -129,7 +129,7 @@ export default function EditPiecePage() {
 
   async function handleDeleteImage(imageId) {
     if (!confirm("Supprimer cette image ?")) return
-    await fetch(`http://127.0.0.1:8000/admin/parts/${id}/images/${imageId}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${id}/images/${imageId}`, {
       method: "DELETE",
       headers: authHeaders(),
     })

@@ -16,7 +16,7 @@ export default function AdminServicesPage() {
 
   async function fetchServices() {
     try {
-      const res = await fetch("http://127.0.0.1:8000/admin/services?limit=20", {
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/services?limit=20", {
         headers: authHeaders(),
       })
       const data = await res.json()
@@ -27,7 +27,7 @@ export default function AdminServicesPage() {
   }
 
   async function toggleActive(service) {
-    await fetch(`http://127.0.0.1:8000/admin/services/${service.id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/services/${service.id}`, {
       method: "PATCH",
       headers: authHeaders(),
       body: JSON.stringify({ is_active: !service.is_active }),
@@ -37,7 +37,7 @@ export default function AdminServicesPage() {
 
   async function handleDelete(service) {
     if (!confirm(`Supprimer le service "${service.title}" ?`)) return
-    await fetch(`http://127.0.0.1:8000/admin/services/${service.id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/services/${service.id}`, {
       method: "DELETE",
       headers: authHeaders(),
     })

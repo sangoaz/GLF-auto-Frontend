@@ -50,7 +50,7 @@ export default function EditVehiculePage() {
 
   async function fetchVehicule() {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/admin/vehicles/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles/${id}`, {
         headers: authHeaders(),
       })
       const data = await res.json()
@@ -61,7 +61,7 @@ export default function EditVehiculePage() {
   }
 
   async function fetchImages() {
-    const res = await fetch(`http://127.0.0.1:8000/admin/vehicles/${id}/images`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles/${id}/images`, {
       headers: authHeaders(),
     })
     const data = await res.json()
@@ -79,7 +79,7 @@ export default function EditVehiculePage() {
     setSuccess(false)
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/admin/vehicles/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles/${id}`, {
         method: "PATCH",
         headers: authHeaders(),
         body: JSON.stringify({
@@ -119,7 +119,7 @@ export default function EditVehiculePage() {
     const headers = authHeaders()
     delete headers["Content-Type"]
 
-    await fetch(`http://127.0.0.1:8000/admin/vehicles/${id}/images/upload`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles/${id}/images/upload`, {
       method: "POST",
       headers,
       body: formData,
@@ -131,7 +131,7 @@ export default function EditVehiculePage() {
   }
 
   async function handleSetCover(imageId) {
-    await fetch(`http://127.0.0.1:8000/admin/vehicles/${id}/images/${imageId}/cover`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles/${id}/images/${imageId}/cover`, {
       method: "PATCH",
       headers: authHeaders(),
     })
@@ -140,7 +140,7 @@ export default function EditVehiculePage() {
 
   async function handleDeleteImage(imageId) {
     if (!confirm("Supprimer cette image ?")) return
-    await fetch(`http://127.0.0.1:8000/admin/vehicles/${id}/images/${imageId}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles/${id}/images/${imageId}`, {
       method: "DELETE",
       headers: authHeaders(),
     })

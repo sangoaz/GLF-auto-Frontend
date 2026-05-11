@@ -49,7 +49,7 @@ export default function NouveauVehiculePage() {
     setError(null)
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/admin/vehicles", {
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles", {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({

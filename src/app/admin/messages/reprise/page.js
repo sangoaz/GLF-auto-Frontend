@@ -17,7 +17,7 @@ export default function AdminRepriseMessagesPage() {
 
   async function fetchMessages() {
     try {
-      const res = await fetch("http://127.0.0.1:8000/admin/trade-in-requests?limit=50", {
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/trade-in-requests?limit=50", {
         headers: authHeaders(),
       })
       const data = await res.json()
@@ -30,7 +30,7 @@ export default function AdminRepriseMessagesPage() {
   async function handleSelect(message) {
     setSelected(message)
     if (!message.is_read) {
-      await fetch(`http://127.0.0.1:8000/admin/trade-in-requests/${message.id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/trade-in-requests/${message.id}`, {
         method: "PATCH",
         headers: authHeaders(),
         body: JSON.stringify({ is_read: true }),

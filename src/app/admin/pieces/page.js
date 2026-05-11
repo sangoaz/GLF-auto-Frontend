@@ -29,7 +29,7 @@ export default function AdminPiecesPage() {
 
   async function fetchPieces() {
     try {
-      const res = await fetch("http://127.0.0.1:8000/admin/parts?limit=20", {
+      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/parts?limit=20", {
         headers: authHeaders(),
       })
       const data = await res.json()
@@ -42,7 +42,7 @@ export default function AdminPiecesPage() {
   }
 
   async function togglePublish(piece) {
-    await fetch(`http://127.0.0.1:8000/admin/parts/${piece.id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts/${piece.id}`, {
       method: "PATCH",
       headers: authHeaders(),
       body: JSON.stringify({ is_published: !piece.is_published }),
