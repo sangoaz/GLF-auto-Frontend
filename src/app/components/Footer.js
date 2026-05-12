@@ -75,16 +75,30 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-3">
               <li className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
-                📍 Adresse du garage
+                📍 20 rue des noyers, 26750 Geyssans
               </li>
               <li className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
-                📞 Numéro de téléphone
+                📞 06 95 31 59 19
               </li>
               <li className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
-                ✉️ Email du garage
+                ✉️ loanfruchon26@outlook.fr
               </li>
               <li className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
-                🕐 Lun–Ven : 8h–18h
+                <details className="group">
+                  <summary className="cursor-pointer list-none hover:opacity-70 transition-opacity">
+                    🕐 Horaires
+                  </summary>
+
+                  <ul className="mt-3 ml-6 flex flex-col gap-2 text-sm">
+                    <li>Lundi : 10h–15h</li>
+                    <li>Mardi : 10h–17h</li>
+                    <li>Mercredi : 10h–19h</li>
+                    <li>Jeudi : 10h–17h</li>
+                    <li>Vendredi : Sur rendez-vous</li>
+                    <li>Samedi : Sur rendez-vous</li>
+                    <li>Dimanche : Fermé</li>
+                  </ul>
+                </details>
               </li>
             </ul>
           </div>
