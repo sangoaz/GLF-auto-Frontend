@@ -9,7 +9,7 @@ const CONDITION_LABELS = {
 
 async function getPieces() {
   try {
-    const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/parts/', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/parts/`, {
       cache: 'no-store',
     })
     if (!res.ok) return []

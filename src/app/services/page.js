@@ -1,6 +1,6 @@
 async function getServices() {
   try {
-    const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/services/', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/services/`, {
       cache: 'no-store',
     })
     if (!res.ok) return []
