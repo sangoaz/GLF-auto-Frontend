@@ -22,7 +22,7 @@ export default function AdminVehiculesPage() {
 
   async function fetchVehicules() {
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles?limit=20", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles?limit=20`, {
         headers: authHeaders(),
       })
       const data = await res.json()

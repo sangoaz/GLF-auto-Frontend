@@ -16,7 +16,7 @@ export default function AdminServicesPage() {
 
   async function fetchServices() {
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/services?limit=20", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/services?limit=20`, {
         headers: authHeaders(),
       })
       const data = await res.json()

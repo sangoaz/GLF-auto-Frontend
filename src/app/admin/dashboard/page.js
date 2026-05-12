@@ -14,10 +14,10 @@ export default function DashboardPage() {
     async function fetchStats() {
       try {
         const [vehicules, pieces, contacts, reprises] = await Promise.all([
-          fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles?limit=1", { headers: authHeaders() }),
-          fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/parts?limit=1", { headers: authHeaders() }),
-          fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/contact-requests?limit=5", { headers: authHeaders() }),
-          fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/trade-in-requests?limit=5", { headers: authHeaders() }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/vehicles?limit=1`, { headers: authHeaders() }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts?limit=1`, { headers: authHeaders() }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/contact-requests?limit=5`, { headers: authHeaders() }),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/trade-in-requests?limit=5`, { headers: authHeaders() }),
         ])
 
         const [vehiculesData, piecesData, contactsData, reprisesData] = await Promise.all([

@@ -29,7 +29,7 @@ export default function AdminPiecesPage() {
 
   async function fetchPieces() {
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/parts?limit=20", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts?limit=20`, {
         headers: authHeaders(),
       })
       const data = await res.json()

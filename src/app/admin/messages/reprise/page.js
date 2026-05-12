@@ -17,7 +17,7 @@ export default function AdminRepriseMessagesPage() {
 
   async function fetchMessages() {
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/trade-in-requests?limit=50", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/trade-in-requests?limit=50`, {
         headers: authHeaders(),
       })
       const data = await res.json()

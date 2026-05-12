@@ -17,7 +17,7 @@ export default function AdminContactMessagesPage() {
 
   async function fetchMessages() {
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/contact-requests?limit=50", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/contact-requests?limit=50`, {
         headers: authHeaders(),
       })
       const data = await res.json()

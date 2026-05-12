@@ -29,7 +29,7 @@ export default function NouveauServicePage() {
     setError(null)
 
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/services", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/services`, {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({

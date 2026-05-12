@@ -38,7 +38,7 @@ export default function NouvellePiecePage() {
     setError(null)
 
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/admin/parts", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/parts`, {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({
