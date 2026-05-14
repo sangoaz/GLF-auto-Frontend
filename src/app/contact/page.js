@@ -1,8 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 
 export default function ContactPage() {
+  const searchParams = useSearchParams()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,6 +13,18 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
+
+  useEffect(() => {
+    const sujet = searchParams.get("sujet")
+
+    if (sujet) {
+      setFormData((prev) => ({
+        ...prev,
+        subject: `Demande concernant : ${sujet}`,
+      }))
+    }
+  }, [searchParams])
+
   const [status, setStatus] = useState(null) // null | "loading" | "success" | "error"
 
   function handleChange(e) {
