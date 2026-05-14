@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { imageUrl } from "../../utils/imageUrl"
+import ImageLightbox from '@/app/components/ImageLightBox'
 
 const CONDITION_LABELS = {
   NEW: "Neuf",
@@ -45,38 +46,10 @@ export default async function PieceDetailPage({ params }) {
 
         {/* Photos */}
         <div>
-          <div
-            className="w-full h-72 flex items-center justify-center mb-3"
-            style={{ backgroundColor: 'var(--color-border)' }}
-          >
-            {coverImage ? (
-              <img
-                src={imageUrl(coverImage.image_url)}
-                alt={coverImage.alt_text || piece.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-6xl">🔧</span>
-            )}
-          </div>
-
-          {otherImages.length > 0 && (
-            <div className="grid grid-cols-4 gap-2">
-              {otherImages.map((img) => (
-                <div
-                  key={img.id}
-                  className="h-20"
-                  style={{ backgroundColor: 'var(--color-border)' }}
-                >
-                  <img
-                    src={imageUrl(img.image_url)}
-                    alt={img.alt_text || piece.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <ImageLightbox
+            images={piece.images || []}
+            title={piece.title}
+          />
         </div>
 
         {/* Infos */}
