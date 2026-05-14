@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { imageUrl } from "../../utils/imageUrl"
+import ImageLightbox from "../../components/ImageLightBox"
 
 async function getVehicule(id) {
   try {
@@ -54,40 +55,10 @@ export default async function VehiculeDetailPage({ params }) {
 
         {/* Photos */}
         <div>
-          {/* Image principale */}
-          <div
-            className="w-full h-72 flex items-center justify-center mb-3"
-            style={{ backgroundColor: 'var(--color-border)' }}
-          >
-            {coverImage ? (
-              <img
-                src={imageUrl(coverImage.image_url)}
-                alt={coverImage.alt_text || vehicule.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-6xl">🚗</span>
-            )}
-          </div>
-
-          {/* Autres images */}
-          {otherImages.length > 0 && (
-            <div className="grid grid-cols-4 gap-2">
-              {otherImages.map((img) => (
-                <div
-                  key={img.id}
-                  className="h-20"
-                  style={{ backgroundColor: 'var(--color-border)' }}
-                >
-                  <img
-                    src={imageUrl(img.image_url)}
-                    alt={img.alt_text || vehicule.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <ImageLightbox
+            images={vehicule.images || []}
+            title={vehicule.title}
+          />
         </div>
 
         {/* Infos */}
