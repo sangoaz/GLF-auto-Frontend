@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { imageUrl } from "../utils/imageUrl"
 
 const CONDITION_LABELS = {
@@ -64,17 +65,20 @@ export default async function PiecesPage() {
                 className="block hover:border-yellow-600 transition-colors"
               >
                 {/* Image */}
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: 'var(--color-border)' }}>
-                  {coverImage ? (
-                    <img
+                {coverImage ? (
+                  <div className="relative h-48" style={{ backgroundColor: 'var(--color-border)' }}>
+                    <Image
                       src={imageUrl(coverImage.image_url)}
                       alt={coverImage.alt_text || piece.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      style={{ objectFit: 'cover' }}
                     />
-                  ) : (
+                  </div>
+                ) : (
+                  <div className="h-48 flex items-center justify-center" style={{ backgroundColor: 'var(--color-border)' }}>
                     <span style={{ color: 'var(--color-text-muted)' }} className="text-4xl">🔧</span>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {/* Infos */}
                 <div className="p-5">

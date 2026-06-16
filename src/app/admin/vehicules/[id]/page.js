@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useAuth } from "../../../hooks/useAuth"
 import AdminSidebar from "../../components/AdminSidebar"
+import Image from 'next/image'
 import { imageUrl } from "../../../utils/imageUrl"
 
 const FUELS = [
@@ -310,10 +311,13 @@ export default function EditVehiculePage() {
                     border: img.is_cover ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
                   }}
                 >
-                  <img
+                  <Image
                     src={imageUrl(img.image_url)}
                     alt=""
-                    className="w-16 h-16 object-cover shrink-0"
+                    width={64}
+                    height={64}
+                    className="shrink-0"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div className="flex-1">
                     {img.is_cover && (

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from 'next/image'
 import { imageUrl } from "../utils/imageUrl"
 
 export default function ImageLightbox({ images = [], title }) {
@@ -66,17 +67,19 @@ export default function ImageLightbox({ images = [], title }) {
   return (
     <>
       <div
-        className="w-full h-72 overflow-hidden mb-3"
+        className="relative w-full h-72 overflow-hidden mb-3"
         style={{
           backgroundColor: "var(--color-border)",
           cursor: "zoom-in",
         }}
         onClick={() => openLightbox(0)}
       >
-        <img
+        <Image
           src={imageUrl(coverImage.image_url)}
           alt={coverImage.alt_text || title}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          fill
+          style={{ objectFit: 'cover' }}
+          className="hover:scale-105 transition-transform duration-300"
         />
       </div>
 
@@ -85,17 +88,19 @@ export default function ImageLightbox({ images = [], title }) {
           {orderedImages.slice(1).map((img, i) => (
             <div
               key={img.id}
-              className="h-20 overflow-hidden"
+              className="relative h-20 overflow-hidden"
               style={{
                 backgroundColor: "var(--color-border)",
                 cursor: "zoom-in",
               }}
               onClick={() => openLightbox(i + 1)}
             >
-              <img
+              <Image
                 src={imageUrl(img.image_url)}
                 alt={img.alt_text || title}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                fill
+                style={{ objectFit: 'cover' }}
+                className="hover:scale-110 transition-transform duration-300"
               />
             </div>
           ))}
@@ -174,17 +179,20 @@ export default function ImageLightbox({ images = [], title }) {
             </button>
           )}
 
-          <img
-            src={imageUrl(orderedImages[currentIndex].image_url)}
-            alt={orderedImages[currentIndex].alt_text || title}
+          <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: "90vw",
-              maxHeight: "75vh",
-              objectFit: "contain",
-              boxShadow: "0 0 60px rgba(0,0,0,0.8)",
-            }}
-          />
+            style={{ position: "relative", width: "90vw", height: "75vh" }}
+          >
+            <Image
+              src={imageUrl(orderedImages[currentIndex].image_url)}
+              alt={orderedImages[currentIndex].alt_text || title}
+              fill
+              style={{
+                objectFit: "contain",
+                boxShadow: "0 0 60px rgba(0,0,0,0.8)",
+              }}
+            />
+          </div>
 
           {orderedImages.length > 1 && (
             <button
