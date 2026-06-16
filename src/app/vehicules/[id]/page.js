@@ -143,7 +143,7 @@ export default async function VehiculeDetailPage({ params }) {
           )}
 
           {/* CTA Contact */}
-          <a
+          <
             a href={`/contact?sujet=${encodeURIComponent(vehicule.title)}`}
             style={{ backgroundColor: 'var(--color-accent)', color: '#111111' }}
             className="block w-full text-center px-8 py-4 font-black uppercase tracking-wider text-sm hover:opacity-90 transition-opacity"
