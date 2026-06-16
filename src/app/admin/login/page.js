@@ -21,14 +21,10 @@ export default function AdminLoginPage() {
 
     try {
       // FastAPI attend un form-data pour OAuth2
-      const body = new URLSearchParams()
-      body.append("username", formData.username)
-      body.append("password", formData.password)
-
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      const res = await fetch('/api/auth/login', {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       })
 
       if (!res.ok) {
@@ -36,10 +32,7 @@ export default function AdminLoginPage() {
         return
       }
 
-      const data = await res.json()
-
-      // Stocker le token dans localStorage
-      localStorage.setItem("glf_admin_token", data.access_token)
+      // Le cookie httpOnly est posé par /api/auth/login, rien à stocker ici
 
       // Rediriger vers le dashboard
       router.push("/admin/dashboard")

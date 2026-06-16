@@ -9,17 +9,26 @@ export function useAuth() {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem("glf_admin_token")
-    if (!stored) {
-      router.push("/admin/login")
-    } else {
-      setToken(stored)
-      setReady(true)
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me')
+        if (!res.ok) {
+          router.push("/admin/login")
+          return
+        }
+        const data = await res.json()
+        setToken(data.token)
+        setReady(true)
+      } catch {
+        router.push("/admin/login")
+      }
     }
+
+    checkAuth()
   }, [router])
 
-  function logout() {
-    localStorage.removeItem("glf_admin_token")
+  async function logout() {
+    await fetch('/api/auth/logout', { method: 'POST' })
     router.push("/admin/login")
   }
 
