@@ -1,4 +1,5 @@
 import { imageUrl } from "../utils/imageUrl"
+import { FUEL_LABELS, TRANSMISSION_LABELS } from "../utils/constants"
 
 async function getVehicules() {
   try {
@@ -12,21 +13,6 @@ async function getVehicules() {
   }
 }
 
-const FUEL_LABELS = {
-  PETROL: 'Essence',
-  DIESEL: 'Diesel',
-  HYBRID: 'Hybride',
-  PLUG_IN_HYBRID: 'Hybride rechargeable',
-  ELECTRIC: 'Electrique',
-  LPG: 'GPL',
-  CNG: 'Gaz naturel',
-}
-
-const TRANSMISSION_LABELS = {
-  MANUAL: 'Manuelle',
-  AUTOMATIC: 'Automatique',
-  SEMI_AUTOMATIC: 'Semi-automatique',
-}
 
 export default async function VehiculesPage() {
   const vehicules = await getVehicules()

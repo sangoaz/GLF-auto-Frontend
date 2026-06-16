@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { imageUrl } from "../../utils/imageUrl"
 import ImageLightbox from "../../components/ImageLightBox"
+import { FUEL_LABELS, TRANSMISSION_LABELS } from '@/app/utils/constants'
 
 async function getVehicule(id) {
   try {
@@ -14,21 +15,6 @@ async function getVehicule(id) {
   }
 }
 
-const FUEL_LABELS = {
-  PETROL: 'Essence',
-  DIESEL: 'Diesel',
-  HYBRID: 'Hybride',
-  PLUG_IN_HYBRID: 'Hybride rechargeable',
-  ELECTRIC: 'Electrique',
-  LPG: 'GPL',
-  CNG: 'Gaz naturel',
-}
-
-const TRANSMISSION_LABELS = {
-  MANUAL: 'Manuelle',
-  AUTOMATIC: 'Automatique',
-  SEMI_AUTOMATIC: 'Semi-automatique',
-}
 
 export default async function VehiculeDetailPage({ params }) {
   const { id } = await params
