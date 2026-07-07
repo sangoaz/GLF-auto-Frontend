@@ -9,6 +9,17 @@ Ce dépôt contient la partie frontend ; la partie API se trouve dans le dépôt
 - **Site en ligne** : [glf-auto.vercel.app](https://glf-auto.vercel.app/)
 - **Backend associé** : [github.com/sangoaz/GLF-auto](https://github.com/sangoaz/GLF-auto)
 
+<p align="center">
+  <img src="images/Accueil.png" width="850" alt="Page d'accueil GLF Auto">
+</p>
+
+<p align="center">
+  <img src="images/Dashboard_Admin.png" width="850" alt="Dashboard administration GLF Auto">
+</p>
+
+<p align="center">
+  <img src="images/Gestion_Vehicule.png" width="850" alt="Gestion des véhicules GLF Auto">
+</p>
 ## Fonctionnalités
 
 Le site public présente :
